@@ -94,7 +94,7 @@ public final class TermuxActivity extends Activity implements ServiceConnection 
     private static final int CONTEXTMENU_HELP_ID = 8;
     private static final int CONTEXTMENU_TOGGLE_KEEP_SCREEN_ON = 9;
 
-    private static final int MAX_SESSIONS = 8;
+    private static final int MAX_SESSIONS = 0;
 
     private static final int REQUESTCODE_PERMISSION_STORAGE = 1234;
 
@@ -586,7 +586,7 @@ public final class TermuxActivity extends Activity implements ServiceConnection 
     }
 
     void addNewSession(boolean failSafe, String sessionName) {
-        if (mTermService.getSessions().size() >= MAX_SESSIONS) {
+        if (mTermService.getSessions().size() < MAX_SESSIONS) {
             new AlertDialog.Builder(this).setTitle(R.string.max_terminals_reached_title).setMessage(R.string.max_terminals_reached_message)
                 .setPositiveButton(android.R.string.ok, null).show();
         } else {
